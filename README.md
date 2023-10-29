@@ -4,7 +4,7 @@ A **Binary Tree** is a hierarchical data structure in which each node has at mos
 
 Check out our carefully selected list of **basic** and **advanced** Binary Tree questions and answers to be well-prepared for your tech interviews in 2024.
 
-![Binary Tree Decorative Image](https://storage.googleapis.com/dev-stack-app.appspot.com/blogImg/binaryTree.png?GoogleAccessId=firebase-adminsdk-bgeaf%40dev-stack-app.iam.gserviceaccount.com&Expires=1698601647&Signature=LMlj%2BBXi%2BKJDBebx2BbmYxnyvSJfstz4Br7zTxPFp%2BHL4dOIrew5QEdZEeJ73PXntPfZqrq4Dek1yxbOzlcCFh7eMg4wlwh%2FTPMSAF9vfgeb7ILLV4H3WgP4pQ46naNnBIYBKjdsceNKs5Ugyz89U5eXKpedH%2FyqBA9lPXgFnpShPl26H1QdPd6FEWdZVB9JWezkYU9DYI%2BFJSWlnwsFrhlgQKyXUnFMRrtHE6RmOR4xYCzlTmMh8TM3HYF1aFmXj3TtxxZICYGt4VdDt%2Bd%2FcG1VCU6emGgBBI2w7gvZmmr9UFQF65hQ6GHawysHWQJclhb0wD7ZFr75jDaFRhwwCQ%3D%3D)
+![Binary Tree Decorative Image](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/blogImg%2FbinaryTree.png?alt=media&token=5c53f519-c774-4106-bdad-c81deb6a3437&_gl=1*1kmead*_ga*OTYzMjY5NTkwLjE2ODg4NDM4Njg.*_ga_CW55HF8NVT*MTY5ODYwNTk1NS4xOTAuMS4xNjk4NjA3MzY2LjYwLjAuMA..)
 
 👉🏼 You can also find all answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
 
