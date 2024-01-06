@@ -1,18 +1,17 @@
-# ⚫ Binary Tree in Tech Interviews 2024: Top 23 Questions & Answers
+# Top 53 Binary Tree Data Structure Interview Questions
 
-A **Binary Tree** is a hierarchical data structure in which each node has at most two children. Given their significance in computer science, they are commonly addressed in coding interviews to assess a candidate's understanding of **data structures** and related **algorithms**.
+<div>
+<p align="center">
+<a href="https://devinterview.io/questions/data-structures-and-algorithms/">
+<img src="https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/github-blog-img%2Fdata-structures-and-algorithms-github-img.jpg?alt=media&token=fa19cf0c-ed41-4954-ae0d-d4533b071bc6" alt="data-structures-and-algorithms" width="100%">
+</a>
+</p>
 
-Check out our carefully selected list of **basic** and **advanced** Binary Tree questions and answers to be well-prepared for your tech interviews in 2024.
+#### You can also find all 53 answers here 👉 [Devinterview.io - Binary Tree Data Structure](https://devinterview.io/questions/data-structures-and-algorithms/binary-tree-data-structure-interview-questions)
 
-![Binary Tree Decorative Image](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/blogImg%2FbinaryTree.png?alt=media&token=5c53f519-c774-4106-bdad-c81deb6a3437&_gl=1*1kmead*_ga*OTYzMjY5NTkwLjE2ODg4NDM4Njg.*_ga_CW55HF8NVT*MTY5ODYwNTk1NS4xOTAuMS4xNjk4NjA3MzY2LjYwLjAuMA..)
+<br>
 
-👉🏼 You can also find all answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 1. What is a _Tree Data Structure_?
-
-### Answer
+## 1. What is a _Tree Data Structure_?
 
 A **tree data structure** is a hierarchical collection of nodes, typically visualized with a root at the top. Trees are typically used for representing relationships, hierarchies, and facilitating efficient data operations.
 
@@ -92,12 +91,9 @@ def inorder_traversal(node):
 print("Inorder Traversal: ")
 inorder_traversal(root)
 ```
+<br>
 
----
-
-## 🔹 2. What is a _Binary Tree_?
-
-### Answer
+## 2. What is a _Binary Tree_?
 
 A **Binary Tree** is a hierarchical structure where each node has up to two children, termed as **left child** and **right child**. Each node holds a data element and pointers to its left and right children.
 
@@ -166,12 +162,9 @@ for val in values_to_insert:
 # 3. Perform in-order traversal
 print(root.in_order_traversal())  # Expected Output: [20, 30, 40, 50, 60, 70, 80]
 ```
+<br>
 
----
-
-## 🔹 3. What is _Binary Heap_?
-
-### Answer
+## 3. What is _Binary Heap_?
 
 A **Binary Heap** is a special binary tree that satisfies the **Heap Property**: parent nodes are ordered relative to their children.
 
@@ -241,12 +234,9 @@ left_child_index = heap.get_left_child_index(1)
 print(f"Parent index of node at index 4: {parent_index}")
 print(f"Left child index of node at index 1: {left_child_index}")
 ```
+<br>
 
----
-
-## 🔹 4. What is a _Binary Search Tree_?
-
-### Answer
+## 4. What is a _Binary Search Tree_?
 
 A **Binary Search Tree** (BST) is a binary tree optimized for quick lookup, insertion, and deletion operations. A BST has the distinct property that each node's left subtree contains values smaller than the node, and its right subtree contains values larger.
 
@@ -296,12 +286,577 @@ def is_bst(node, min=float('-inf'), max=float('inf')):
     return (is_bst(node.left, min, node.value) and
             is_bst(node.right, node.value, max))
 ```
+<br>
 
----
+## 5. What is _AVL Tree_? How to _Balance_ it?
 
-## 🔹 5. What are advantages and disadvantages of _BST_?
+**AVL Trees**, named after their inventors Adelson-Velsky and Landis, are a special type of binary search tree (BST) that **self-balance**. This balancing optimizes time complexity for operations like search, insert, and delete to $O(\log n)$.
 
-### Answer
+### Balance Criterion
+
+Each node in an AVL Tree must satisfy the following balance criterion to maintain self-balancing:
+
+$$
+\text{BalanceFactor}(N) = \text{height}(L) - \text{height}(R) \in \{-1, 0, 1\}
+$$
+
+If a node's **Balance Factor** deviates from this range, the tree needs rebalancing.
+
+This involves three steps:
+
+1. Evaluate each node's balance factor.
+2. Identify the type of imbalance: left-heavy, right-heavy, or requiring double rotation.
+3. Perform the necessary rotations to restore balance.
+
+### Visual Representation
+
+![AVL Tree Balance](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2Favl-tree-1.png?alt=media&token=23c747ed-29f4-4b43-a1f2-b274cf4131fe)
+
+### Types of Rotations for Rebalancing
+
+#### Single Rotations
+
+- **Left Rotation (LL)**: Useful when the right subtree is taller.
+      ![Left-Left Rotation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2FLL%20Rotation%20(1).png?alt=media&token=fe873921-147c-4639-a5d8-4ba83abb111b)
+
+- **Right Rotation (RR)**: Used for a taller left subtree.
+      ![Right-Right Rotation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2FRR%20Rotation%20(1).png?alt=media&token=be8009dc-1c40-4096-85e9-ce65f320880f)
+
+#### Double Rotations
+
+- **Left-Right (LR) Rotation**: Involves an initially taller left subtree.
+      ![Left-Right Rotation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2FLR%20Rotation%20(1).png?alt=media&token=d8db235b-f6f7-49e5-b4c4-5e4e2529aa70)
+
+- **Right-Left (RL) Rotation**: Similar to LR but starts with a taller right subtree.
+      ![Right-Left Rotation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2FRL%20Rotation%20(1).png?alt=media&token=c18900f3-7fe9-4c7e-8ba8-f74cb6d8ecc3)
+
+### Code Example: AVL Operations
+
+Here is the Python code:
+
+```python
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.key = key
+        self.height = 1
+
+def left_rotate(z):
+    y = z.right
+    T2 = y.left
+    y.left = z
+    z.right = T2
+    z.height = 1 + max(get_height(z.left), get_height(z.right))
+    y.height = 1 + max(get_height(y.left), get_height(y.right))
+    return y
+```
+<br>
+
+## 6. What is a _Red-Black Tree_?
+
+A **Red-Black Tree** is a self-balancing binary search tree that optimizes both search and insertion/deletion operations. It accomplishes this via a set of rules known as **red-black balance**, making it well-suited for practical applications.
+
+### Key Characteristics
+
+- **Root**: Always black.
+- **Red Nodes**: Can only have black children.
+- **Black Depth**: Every path from a node to its descendant leaves contains the same count of black nodes.
+
+These rules ensure a **balanced tree**, where the **longest** path is no more than twice the length of the **shortest** one.
+
+### Benefits
+
+- **Efficiency**: Maintains $O(\log n)$ operations even during insertions/deletions.
+- **Simplicity**: Easier to implement than some other self-balancing trees like AVL trees.
+
+### Visual Representation
+
+Nodes in a **Red-Black Tree** are visually differentiated by color. Memory-efficient implementations often use a single bit for color, with '1' for red and '0' for black.
+
+![Red-Black Tree Example](https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_example.svg)
+
+### Complexity Analysis
+
+- **Time Complexity**:
+  - Search: $O(\log n)$
+  - Insert/Delete: $O(\log n)$
+- **Space Complexity**: $O(n)$
+
+### Code Example: Red-Black Tree
+
+Here is the Python code:
+
+```python
+class Node:
+    def __init__(self, val, color):
+        self.left = None
+        self.right = None
+        self.val = val
+        self.color = color  # 'R' for red, 'B' for black
+
+class RedBlackTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, val):
+        new_node = Node(val, 'R')
+        if not self.root:
+            self.root = new_node
+            self.root.color = 'B'  # Root is always black
+        else:
+            self._insert_recursive(self.root, new_node)
+    
+    def _insert_recursive(self, root, node):
+        if root.val < node.val:
+            if not root.right:
+                root.right = node
+            else:
+                self._insert_recursive(root.right, node)
+        else:
+            if not root.left:
+                root.left = node
+            else:
+                self._insert_recursive(root.left, node)
+        
+        self._balance(node)
+
+    def _balance(self, node):
+        # Red-black balancing logic here
+        pass
+```
+<br>
+
+## 7. How is an _AVL Tree_ different from a _B-Tree_?
+
+Balanced search trees, such as **AVL Trees** and **B-Trees** - are designed primarily for optimized and **fast search operations**. However, each tree has distinct core properties and specific applications.
+
+### Key Distinctions
+
+#### Structural Characteristics
+
+- **AVL Trees**: These are self-adjusting Binary Search Trees with nodes that can have up to two children. Balancing is achieved through rotations.
+
+- **B-Trees**: Multi-way trees where nodes can house multiple children, balancing is maintained via key redistribution.
+
+#### Storage Optimization
+
+- **AVL Trees**: Best suited for in-memory operations, optimizing searches in RAM. Their efficiency dwindles in disk storage due to pointer overhead.
+  
+- **B-Trees**: Engineered for disk-based storage, minimizing I/O operations, making them ideal for databases and extensive file systems.
+
+#### Data Housing Approach
+
+- **AVL Trees**: Utilize dynamic memory linked via pointers, which can be more memory-intensive.
+
+- **B-Trees**: Data is stored in disk blocks, optimizing access by reducing disk I/O.
+
+#### Search Efficiency
+
+- Both types ensure $O(\log n)$ search time. However, B-Trees often outpace AVL Trees in large datasets due to their multi-way branching.
+
+### Code Example: AVL Tree
+
+Here is the Python code:
+
+```python
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+        self.height = 1
+
+class AVLTree:
+    def __init__(self):
+        self.root = None
+    # Additional methods for insertion, deletion, and balancing.
+```
+
+### Code Example: B-Tree
+
+Here is the Python code:
+
+```python
+class BTreeNode:
+    def __init__(self, leaf=False):
+        self.leaf = leaf
+        self.keys = []
+        self.child = []
+    # Additional methods for operations.
+
+class BTree:
+    def __init__(self, t):
+        self.root = BTreeNode(True)
+        self.t = t
+    # Methods for traversal, search, etc.
+```
+<br>
+
+## 8. How can a _Fenwick Tree (Binary Indexed Tree)_ be beneficial in algorithm design?
+
+The **Fenwick Tree**, or Binary Indexed Tree $(BIT)$, is an extremely efficient data structure particularly suited for **range queries and point updates** in large sequential datasets, like arrays. Its primary strength lies in its **fast update and query operations**, presenting unique advantages in specific algorithmic scenarios.
+
+### Use Cases
+
+- **Sum Query Efficiency**: In an array, obtaining the sum of its elements up to index $i$ requires $O(n)$ time. With a BIT, this task is optimized to $O(\log n)$.
+  
+- **Update Efficiency**: While updating an array's element at index $i$ takes $O(1)$, updating the prefix sum data to reflect this change typically needs $O(n)$ time. A BIT aids in achieving a $O(\log n)$ time update for both.
+
+- **Range Queries Optimization**: A BIT is helpful in scenarios where you need to frequently calculate ranges like $[l, r]$ in sequences that don't change size.
+
+### Code Example: Constructing a Binary-Indexed Tree
+
+Here is the Python code:
+
+```python
+def update(bit, idx, val):
+    while idx < len(bit):
+        bit[idx] += val
+        idx += (idx & -idx)
+    
+def get_sum(bit, idx):
+    total = 0
+    while idx > 0:
+        total += bit[idx]
+        idx -= (idx & -idx)
+    return total
+
+def construct_bit(arr):
+    bit = [0] * (len(arr) + 1)
+    for i, val in enumerate(arr):
+        update(bit, i + 1, val)
+    return bit
+```
+
+To calculate the sum from index $1$ to $7$, the call is: `get_sum(bit, 7) - get_sum(bit, 0)`. This subtractions helps in avoiding the extra point.
+<br>
+
+## 9. What is a _Segment Tree_, and how does it differ from a traditional binary tree in usage and efficiency?
+
+**Segment Trees** are variant binary search trees optimized for fast **range queries** on an interval of a known array.
+
+### Features of a Segment Tree
+
+- **Root Node**: Covers the entire array or range.
+- **Functionality**: Can efficiently handle range operations like find-sum, find-max, and find-min.
+- **Internal Nodes**: Divide the array into two equal segments.
+- **Leaves**: Represent individual array elements.
+- **Building the Tree**: Done in top-down manner.
+- **Complexity**: Suitable for queries with $O(\log n)$ complexity over large inputs.
+- **Operations**: Can perform range updates in $O(\log n)$ time.
+
+### Coding Example: Range Sum Query
+
+Here is the Python code:
+
+```python
+class SegmentTree:
+    def __init__(self, arr):
+        self.tree = [None] * (4*len(arr))
+        self.build_tree(arr, 0, len(arr)-1, 0)
+    
+    def build_tree(self, arr, start, end, pos):
+        if start == end:
+            self.tree[pos] = arr[start]
+            return
+
+        mid = (start + end) // 2
+        self.build_tree(arr, start, mid, 2*pos+1)
+        self.build_tree(arr, mid+1, end, 2*pos+2)
+        self.tree[pos] = self.tree[2*pos+1] + self.tree[2*pos+2]
+
+    def range_sum(self, q_start, q_end, start=0, end=None, pos=0):
+        if end is None:
+            end = len(self.tree) // 4 - 1
+
+        if q_end < start or q_start > end:
+            return 0
+        if q_start <= start and q_end >= end:
+            return self.tree[pos]
+        mid = (start + end) // 2
+        return self.range_sum(q_start, q_end, start, mid, 2*pos+1) + self.range_sum(q_start, q_end, mid+1, end, 2*pos+2)
+
+# Example usage
+arr = [1, 3, 5, 7, 9, 11]
+st = SegmentTree(arr)
+print(st.range_sum(1, 3))  # Output: 15 (5 + 7 + 3)
+```
+<br>
+
+## 10. What is a _Splay Tree_, and how does its _splay operation_ work?
+
+The **Splay Tree**, a form of self-adjusting binary search tree, reshapes itself to optimize performance based on recent data access patterns. It achieves this through "splaying" operations.
+
+### Splaying Nodes
+
+The **splay operation** aims to move a target node $x$ to the root position via a sequence of tree and node manipulations to increase efficiency.
+
+The process generally involves:
+
+- **Zig Step**: If the node is a direct child of the root, it's rotated up.
+
+- **Zig-Zig Step**: If both the node and its parent are left or right children, they're both moved up.
+
+- **Zig-Zag Step**: If one is a left child, and the other a right child, a double rotation brings both up.
+
+The splay sequence also ensures that descendants of $x$ remain children of $x$ after the splay operation.
+
+### Advantages and Disadvantages
+
+- **Pros**:
+  - Trees can adapt to access patterns, making it an ideal data structure for both search and insert operations in practice.
+  - It can outperform other tree structures in some cases due to its adaptive nature.
+
+- **Cons**:
+  - The splay operation is complex and can be time-consuming.
+  - Splay trees do not guarantee the best time complexity for search operations, which can be an issue in performance-critical applications where a consistent time is required.
+
+- **Average Time Complexity**:
+  - **Search**: $O(\log{n})$ on average.
+  - **Insertion** and **Deletion**: $O(\log{n})$ on average.
+
+### Code Example: Splay Tree and Splaying Operation
+
+Here is the Python code:
+
+```python
+class Node:
+    def __init__(self, key):
+        self.left = self.right = None
+        self.key = key
+
+class SplayTree:
+    def __init__(self):
+        self.root = None
+
+    def splay(self, key):
+        if self.root is None or key == self.root.key:
+            return  # No need to splay
+        dummy = Node(None)  # Create a dummy node
+        left, right, self.root.left, self.root.right = dummy, dummy, dummy, dummy
+        while True:
+            if key < self.root.key:
+                if self.root.left is None or key < self.root.left.key:
+                    break
+                self.root.left, self.root, right.left = right.left, self.root.left, self.root
+                right, self.root = self.root, right
+            if key > self.root.key:
+                if self.root.right is None or key > self.root.right.key:
+                    break
+                self.root.right, self.root, left.right = left.right, self.root.right, self.root
+                left, self.root = self.root, left
+        left.right, right.left = self.root.left, self.root.right
+        self.root.left, self.root.right = left, right
+        self.root = dummy.right
+
+# Splay the node with key 6
+splayTree = SplayTree()
+splayTree.root = Node(10)
+splayTree.root.left = Node(5)
+splayTree.root.left.left = Node(3)
+splayTree.root.left.right = Node(7)
+splayTree.root.right = Node(15)
+splayTree.splay(6)
+```
+<br>
+
+## 11. Explain the concept and structure of a _Ternary Tree_.
+
+**Ternary Trees**, a type of multiway tree, were traditionally used for disk storage. They can be visualized as full or complete. Modern applications are more algorithmic than storage based. While not as common as binary trees, they are rich in learning opportunities.
+
+### Structure
+
+Each **node** in a ternary tree typically has three **children**:
+
+- Left
+- Middle
+- Right
+
+This organizational layout is especially effective for representing certain types of data or solving specific problems. For instance, ternary trees are optimal when dealing with scenarios that have three distinct outcomes at a decision point.
+
+### Code Example: Ternary Tree Node
+
+Here is the Python code:
+
+```python
+class TernaryNode:
+    def __init__(self, data, left=None, middle=None, right=None):
+        self.data = data
+        self.left = left
+        self.middle = middle
+        self.right = right
+```
+<br>
+
+## 12. Describe a _Lazy Segment Tree_ and when it is used over a regular Segment Tree.
+
+The **Lazy Segment Tree** supplements the standard Segment Tree by allowing delayed updates, making it best suited for the Range Update and Point Query type tasks. It is **more efficient** in such scenarios, especially when dealing with a large number of updates.
+
+###  Lazy Propagation Mechanism
+
+The Lazy Segment Tree keeps track of pending updates on a range of elements using a separate array or data structure.
+
+When a range update is issued, rather than carrying out the immediate actions for all elements in that range, the tree schedules the update to be executed when required.
+
+The next time an element within that range is accessed (such as during a range query or point update), the tree first ensures that any pending updates get propagated to the concerned range. This propagation mechanism avoids redundant update operations, achieving time complexity of $O(\log n)$ for range updates, range queries, and point updates.
+
+### Code Example: Lazy Segment Tree
+
+Here is the Python code:
+
+```python
+class LazySegmentTree:
+    def __init__(self, arr):
+        self.size = len(arr)
+        self.tree = [0] * (4 * self.size)
+        self.lazy = [0] * (4 * self.size)
+        self.construct_tree(arr, 0, self.size-1, 0)
+    
+    def update_range(self, start, end, value):
+        self.update_range_util(0, 0, self.size-1, start, end, value)
+    
+    def range_query(self, start, end):
+        return self.range_query_util(0, 0, self.size-1, start, end)
+
+    # Implement the rest of the methods
+
+    def construct_tree(self, arr, start, end, pos):
+        if start == end:
+            self.tree[pos] = arr[start]
+        else:
+            mid = (start + end) // 2
+            self.tree[pos] = self.construct_tree(arr, start, mid, 2*pos+1) + self.construct_tree(arr, mid+1, end, 2*pos+2)
+        return self.tree[pos]
+
+    def update_range_util(self, pos, start, end, range_start, range_end, value):
+        if self.lazy[pos] != 0:
+            self.tree[pos] += (end - start + 1) * self.lazy[pos]
+            if start != end:
+                self.lazy[2*pos+1] += self.lazy[pos]
+                self.lazy[2*pos+2] += self.lazy[pos]
+            self.lazy[pos] = 0
+
+        if start > end or start > range_end or end < range_start:
+            return
+
+        if start >= range_start and end <= range_end:
+            self.tree[pos] += (end - start + 1) * value
+            if start != end:
+                self.lazy[2*pos+1] += value
+                self.lazy[2*pos+2] += value
+            return
+
+        mid = (start+end) // 2
+        self.update_range_util(2*pos+1, start, mid, range_start, range_end, value)
+        self.update_range_util(2*pos+2, mid+1, end, range_start, range_end, value)
+        self.tree[pos] = self.tree[2*pos+1] + self.tree[2*pos+2]
+
+    def range_query_util(self, pos, start, end, range_start, range_end):
+        if self.lazy[pos]:
+            self.tree[pos] += (end - start + 1) * self.lazy[pos]
+            if start != end:
+                self.lazy[2*pos+1] += self.lazy[pos]
+                self.lazy[2*pos+2] += self.lazy[pos]
+            self.lazy[pos] = 0
+
+        if start > end or start > range_end or end < range_start:
+            return 0
+
+        if start >= range_start and end <= range_end:
+            return self.tree[pos]
+
+        mid = (start + end) // 2
+        return self.range_query_util(2*pos+1, start, mid, range_start, range_end) + self.range_query_util(2*pos+2, mid+1, end, range_start, range_end)
+```
+<br>
+
+## 13. What is a _Treap_, and how does it combine the properties of a binary search tree and a heap?
+
+A **Treap**, also known as a **Cartesian Tree**, is a specialized **binary search tree** that maintains a dual structure, inheriting characteristics from both a **Binary Search Tree** (BST) and a **Heap**.
+
+### Core Properties
+
+- **BST Order**: Every node satisfies the order: $\text{node.left} < \text{node} < \text{node.right}$ based on a specific attribute. Traditionally, it's the node's numerical key-value that is used for this ordering.
+- **Heap Priority**: Each node conforms to the "parent" property, where its heap priority is determined by an attribute independent of the BST order. This attribute is often referred to as the node's "priority".
+
+### Link between Priority and Order
+
+The `priority` attribute of a Treap node acts as a "tether" or a link that ensures the tree's structure conforms to both BST and heap properties. When nodes are inserted or their keys are updated in a Treap, their priorities are adjusted to maintain both of these properties simultaneously.
+
+### Operations
+
+#### Insert Operation
+
+When a new node is inserted into the Treap, both BST and heap properties are simultaneously maintained by adjusting the node's `priority` based on its key.
+
+1. The node is first inserted based on the BST property (overriding its priority if necessary).
+2. Then, it "percolates" up the tree based on its priority to regain the heap characteristic.
+
+#### Delete Operation
+
+Deletion, as always, is a two-step process:
+
+1. Locate the node to be deleted.
+2. Replace it with either the left or right child to keep the BST property. The replacement is specifically chosen to preserve the overall priority order of the tree.
+
+### Complexity Analysis
+
+  - **Time Complexity**: All primary operations such as Insert, Delete, and Search take $\mathcal{O}(\log n)$ expected time.
+  - **Space Complexity**: The structure preserves both BST and heap requirements with each node carrying two data attributes (key and priority).
+<br>
+
+## 14. What is a _Balanced Tree_?
+
+A **Balanced Tree** ensures that the **Balance Factor**—the height difference between left and right subtrees of any node—doesn't exceed one. This property guarantees efficient $O(\log n)$ time complexity for **search**, **insertion**, and **deletion** operations.
+
+### Balanced Tree Criteria
+
+- **Height Difference**: Each node's subtrees differ in height by at most one.
+- **Recursive Balance**: Both subtrees of every node are balanced.
+
+### Benefits
+
+- **Efficiency**: Avoids the $O(n)$ degradation seen in unbalanced trees.
+- **Predictability**: Provides stable performance, essential for real-time applications.
+
+### Visual Comparison
+
+![](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/binary%20tree%2FHeight-Balanced-Tree-2%20(1).png?alt=media&token=4751e97d-2115-4a6a-a4cc-19fa1a1e0a7d)
+
+
+
+The **balanced tree** maintains $O(\log n)$ height, while the **unbalanced tree** could degenerate into a linked list with $O(n)$ height.
+
+### Code Example: Balance Verification
+
+Here is the Python code:
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def is_balanced(root):
+    if root is None:
+        return True
+
+    left_height = get_height(root.left)
+    right_height = get_height(root.right)
+
+    return abs(left_height - right_height) <= 1 and is_balanced(root.left) and is_balanced(root.right)
+
+def get_height(node):
+    if node is None:
+        return 0
+
+    return 1 + max(get_height(node.left), get_height(node.right))
+```
+<br>
+
+## 15. What are advantages and disadvantages of _BST_?
 
 The **Binary Search Tree** (BST) is a versatile data structure that offers many benefits but also comes with limitations.
 
@@ -338,236 +893,16 @@ The **Binary Search Tree** (BST) is a versatile data structure that offers many 
 4. **Complex Self-Balancing Algorithms**: While self-balancing trees like AVL or Red-Black trees mitigate the risk of imbalance, they are more complex to implement.
 
 5. **Lack of Global Optimum**: BSTs do not readily provide access to the smallest or largest element, unlike data structures like heaps.
+<br>
 
----
 
-## 🔹 6. Explain the difference between _Binary Tree_ and _Binary Search Tree_.
 
-### Answer
+#### Explore all 53 answers here 👉 [Devinterview.io - Binary Tree Data Structure](https://devinterview.io/questions/data-structures-and-algorithms/binary-tree-data-structure-interview-questions)
 
-While **Binary Trees** and **Binary Search Trees** (BSTs) share a tree-like structure, they are differentiated by key features such as node ordering and operational efficiency.
+<br>
 
-### Key Distinctions
-
-#### Node Ordering
-
-   - **Binary Tree**: No specific ordering rules between parent and child nodes.
-   - **BST**: Nodes are ordered—left children are smaller, and right children are larger than the parent node.
-
-#### Efficiency in Searching
-
-   - **Binary Tree**: $O(n)$ time complexity due to the need for full traversal in the worst case.
-   - **BST**: Improved efficiency with $O(\log n)$ time complexity in balanced trees.
-
-#### Node Insertion and Deletion
-
-   - **Binary Tree**: Flexible insertion without constraints.
-   - **BST**: Ordered insertion and deletion to maintain the tree's structure.
-
-#### Tree Balancing
-
-   - **Binary Tree**: Generally, balancing is not required.
-   - **BST**: Balancing is crucial for optimized performance.
-
-#### Use Cases
-
-   - **Binary Tree**: Often used in heaps, tries, and tree traversal algorithms.
-   - **BST**: Commonly used in dynamic data handling scenarios like maps or sets in standard libraries.
-
-### Visual Comparison
-
-#### Binary Tree
-
-In this **Binary Tree**, there's no specific ordering. For instance, 6 is greater than its parent node, 1, but is on the left subtree.
-
-```plaintext
-    5
-   / \
-  1   8
- / \
-6   3
-```
-
-#### Binary Search Tree
-
-Here, the **Binary Search Tree** maintains the ordering constraint. All nodes in the left subtree (3, 1) are less than 5, and all nodes in the right subtree (8) are greater than 5.
-
-```plaintext
-    5
-   / \
-  3   8
- / \
-1   4
-```
-
-### Key Takeaways
-
-- **BSTs** offer enhanced efficiency in lookups and insertions.
-- **Binary Trees** provide more flexibility but can be less efficient in searches.
-- Both trees are comparable in terms of memory usage.
-
----
-
-## 🔹 7. Compare _Trie_ vs. _Binary Search Trie_.
-
-### Answer
-
-While **Tries** are specialized for tasks involving strings and are especially efficient for datasets with shared prefixes, **BSTs** are versatile, general-purpose trees that can store any ordered data.
-
-### Time Complexity
-
-#### Look-up
-
-- **Trie**: This is determined by the length of the word/key being looked up. Hence, the time complexity is $O(m)$, where $m$ is the length of the key.
-- **BST**: Efficient look-ups in balanced BSTs are $O(\log n)$, but if the BST becomes skewed, it degrades to $O(n)$.
-
-#### Insertion and Deletion
-
-- **Trie**: Insertion and deletion are typically $O(m)$, with $m$ being the key's length.
-- **BST**: Insertion and deletion are $O(\log n)$ in a balanced tree. However, in the worst-case scenario (unbalanced tree), these operations can take $O(n)$ time.
-
-### Space Complexity
-
-- **Trie**: Often more space-efficient, especially when dealing with datasets having short keys with common prefixes. It can save considerable space by sharing common prefix nodes.
-- **BST**: Every node in the BST requires storage for its key and pointers to its two children. This fixed overhead can make BSTs less space-efficient than tries, especially for large datasets.
-
-### Specialized Operations
-
-- **Trie**: Excels at operations like longest-prefix matching, making it an ideal choice for applications such as autocompletion, IP routing, and more.
-- **BST**: While not specialized like tries, BSTs are more general-purpose and can handle a wider range of tasks.
-
-### Maintenance and Balance
-
-- **Trie**: Inherently balanced, making them relatively low-maintenance. This ensures consistent performance without the need for additional balancing algorithms.
-- **BST**: To maintain efficient operation, BSTs often require balancing using specific algorithms or tree structures like AVL or Red-Black trees. Without periodic balancing, the tree could become skewed, leading to suboptimal performance.
-
-
----
-## 🔹 8. What is a _Balanced Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 9. What is a _Red-Black Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 10. How does _Inserting_ or _Deleting_ nodes affect a _Red-Black Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 11. What is the time complexity for _Insert_ into _Red-Black Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 12. What is the difference between _Heap_ and _Red-Black Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 13. What is _AVL Tree_? How to _Balance_ it?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 14. When standard _BSTs_ might be preferred over _AVL Trees_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 15. Compare _Red-Black Trees_ and _AVL Trees_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 16. How is an _AVL Tree_ different from a _B-Tree_?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 17. Name some ways to implement _Priority Queue_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 18. Classify _Tree Traversal Algorithms_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 19. What is _Morris Traversal_ for a _Tree_? How to implement one?
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 20. Implement _Pre-order Traversal_ of _Binary Tree_ using _Recursion_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 21. Implement _Iterative Pre-order Traversal_ of a _Binary Tree_ without _Recursion_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 22. Convert a _Binary Tree_ into a _Doubly Linked List_.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
-
-## 🔹 23. Build a _Binary Expression Tree_ for the given expression.
-
-### Answer
-
-👉🏼 Check out all 23 answers here: [Devinterview.io - Binary Tree](https://devinterview.io/data/binaryTree-interview-questions)
-
----
+<a href="https://devinterview.io/questions/data-structures-and-algorithms/">
+<img src="https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/github-blog-img%2Fdata-structures-and-algorithms-github-img.jpg?alt=media&token=fa19cf0c-ed41-4954-ae0d-d4533b071bc6" alt="data-structures-and-algorithms" width="100%">
+</a>
+</p>
 
